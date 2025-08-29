@@ -1,0 +1,91 @@
+:source-highlighter: highlight.js
+:stylesdir: style
+:stylesheet: layout.css
+:source-path: ..
+== Domain: A Simple Book Shop
+
+Let's start with the domain we're working with.
+
+We're building queries and logic around a *simplified book shop* — something familiar enough to focus on *tech*, not business rules.
+
+Our domain has three core entities:
+
+* Customers who buy books
+* Books with basic information like title, author, and price
+* Purchases linking customers to books they've bought
+
+To give you a feel for the domain, here’s a snapshot of the data we’ll be using throughout the presentation:
+
+include::../data/generated/data.tbl[]
+
+This domain is intentionally small, but it's expressive enough to explore:
+
+* **Joins** (e.g. purchases + books + customers)
+* **Aggregations** (e.g. total revenue per book)
+* **Filters & ordering** (e.g. customers who bought most, books sold last month)
+* **Schema-driven code generation** via jOOQ
+
+It’s also something you can read and understand *at a glance* — no business logic needed.
+
+=== From Data to Schema
+
+We’ve just seen the data as it might appear in a table or application.
+
+Let’s now look at how this is defined in the **database schema**, and how jOOQ can generate Java code from that schema — letting us write type-safe queries directly from the model.
+
+[source,sql]
+----
+include::{source-path}/../resources/db/migration/v2025.08.0001-shop.sql[]
+----
+
+Views can also be used as we will see in the code.
+
+[source,sql]
+----
+include::{source-path}/../resources/db/migration/v2025.08.0002-analytic.sql[]
+----
+
+These definitions will be used by:
+
+* **Flyway**, to apply the schema and keep versioning in check
+* **jOOQ**, to generate Java classes for each table and column
+
+From there, we’ll be ready to query using **jOOQ’s fluent, type-safe DSL**.
+
+== (Optional) Run the Book Shop with Just SQL
+
+If you’d like to explore the database *before* touching jOOQ, you can spin up the Postgres container and apply the schema + data manually.
+
+This gives you a good feel for the SQL layer underneath — the same schema that jOOQ will later generate code from.
+
+We’ve included a simple Docker Compose setup:
+
+[source,shell]
+----
+docker-compose up -d
+----
+
+This will start a local PostgreSQL instance with the right settings.
+You can connect to it using your favorite SQL client or CLI (`psql`).
+
+Apply the schema from above using the domain data:
+
+[source,sql]
+----
+include::../data/generated/data.sql[]
+----
+
+Once loaded, you can:
+
+* Run manual SQL queries to explore the data
+* Use joins, filters, etc.
+* Try replicating the queries we’ll later write with jOOQ
+
+This is optional — but highly recommended if you're new to relational models or just want to see the "bare metal" before using jOOQ’s abstraction.
+
+We've prepared some analytical queries to be used as starting point:
+
+[source,sql]
+----
+include::../data/query.sql[]
+----

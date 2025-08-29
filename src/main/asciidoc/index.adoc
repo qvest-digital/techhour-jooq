@@ -6,3 +6,5 @@
 = Strong Types, Strong Queries: Exploring jOOQ
 
 include::chapter/introduction.adoc[]
+
+include::chapter/domain.adoc[]
