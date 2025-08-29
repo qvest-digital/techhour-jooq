@@ -1,0 +1,6 @@
+[libraries]
+org-assertj-assertj-core = { module = "org.assertj:assertj-core", version = "3.27.4" }
+org-junit-junit-bom = { module = "org.junit:junit-bom", version = "5.13.4" }
+
+[plugins]
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.10" }
