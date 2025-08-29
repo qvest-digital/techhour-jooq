@@ -7,4 +7,8 @@
 
 include::chapter/introduction.adoc[]
 
+include::chapter/jooq.adoc[]
+
+include::chapter/schema.adoc[]
+
 include::chapter/domain.adoc[]

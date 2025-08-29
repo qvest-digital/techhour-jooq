@@ -1,7 +1,12 @@
 [libraries]
 org-assertj-assertj-core = { module = "org.assertj:assertj-core", version = "3.27.4" }
+org-flywaydb-flyway-core = { module = "org.flywaydb:flyway-core", version = "11.11.2" }
+org-flywaydb-flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version = "11.11.2" }
 org-junit-junit-bom = { module = "org.junit:junit-bom", version = "5.13.4" }
+org-jooq-jooq = { module = "org.jooq:jooq", version = "3.20.6" }
+org-postgresql-postgresql = { module = "org.postgresql:postgresql", version = "42.7.7" }
 
 [plugins]
+dev-monosoul-jooq-docker = { id = "dev.monosoul.jooq-docker", version = "7.0.22" }
 org-asciidoctor-jvm-convert = { id = "org.asciidoctor.jvm.convert", version = "4.0.5" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.10" }

@@ -1,0 +1,78 @@
+:source-highlighter: highlight.js
+:stylesdir: style
+:stylesheet: layout.css
+:source-path: ..
+== Schema
+
+Before we dive into the details, let’s take a quick look at how our database schema is managed. Flyway is one popular tool for database migrations — it’s not required for jOOQ to work, but it fits the philosophy well: Your database schema lives in versioned SQL, and jOOQ reflects it into Java code.
+
+Here’s how the build process evolves as you add more structure.
+jOOQ brings type-safe SQL. Flyway brings versioned, repeatable schema changes. Together, they form a clean pipeline — from migrations to code generation to production.
+
+[cols="1,1,1,1", options="header"]
+|===
+| Phase | JDBC | jOOQ | jOOQ + Flyway
+
+| Initialization
+|
+|
+| ✅ Postgres Container
+
+| Pre Processing
+|
+|
+| ✅ Flyway Migration
+
+| Source Generation
+|
+| ✅ jOOQ Codegen (manual or IDE task)
+| ✅ jOOQ Codegen using Postgres Container
+
+| Compilation
+|
+| ✅ 1. Safety net
+| ✅ 1. Safety net
+
+| Verification
+| ✅ 1. Safety net
+| ✅ 2. Safety net
+| ✅ 2. Safety net
+|===
+
+=== jOOQ Code Generation in Gradle
+
+To integrate jOOQ smoothly into your Gradle build process, you can use one of the following community plugins.
+
+These plugins help automate jOOQ code generation during your build lifecycle, making it easy to regenerate code after schema changes or Flyway migrations.
+
+We've integrated the `monosoul/jooq-gradle-plugin` as a working example in this presentation.
+
+=== Recommended Plugins
+
+* https://github.com/monosoul/jooq-gradle-plugin[**monosoul/jooq-gradle-plugin**]
++
+A lightweight, Kotlin-friendly plugin that offers tight integration with jOOQ and Flyway. Ideal for simple setups and CI pipelines.
++
+[source,kotlin]
+----
+plugins {
+    id ("dev.monosoul.jooq") version "x.y.z"
+}
+----
+
+* https://github.com/etiennestuder/gradle-jooq-plugin[**etiennestuder/gradle-jooq-plugin**]
++
+A more advanced and flexible plugin that supports detailed jOOQ configuration. Good for projects with custom generation needs.
++
+[source,kotlin]
+----
+plugins {
+    id ("nu.studer.jooq") version "x.y.z"
+}
+----
+
+=== Integration Tip
+
+Make sure jOOQ code generation runs **after** your Flyway migrations.
+That way, your Java code always reflects the latest schema version.
+

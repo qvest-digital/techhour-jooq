@@ -1,0 +1,125 @@
+:source-highlighter: highlight.js
+:stylesdir: style
+:stylesheet: layout.css
+:source-path: ..
+== Why jOOQ?
+
+As mentioned, jOOQ lets you write SQL in Java with full type safety and IDE support, bridging the gap between relational databases and object-oriented code, and we are going through a couple of topics where jOOQ shines:
+
+=== Domain Modeling
+
+Compared to traditional ORMs, jOOQ offers a lot more flexibility when modeling your domain.
+With classical ORMs, it’s often tricky to adapt the data model without touching core entities — things like projections, custom views, or handling relationships (eager/lazy loading) can get messy fast.
+
+jOOQ takes a different approach: you can easily build tailored models using DAOs, views, or plain SQL, all without interfering with your main schema or domain logic. This makes it much easier to keep things clean, modular, and focused on your actual use cases.
+
+=== Code generation
+
+jOOQ generates Java code directly from your database schema.
+
+Tables, columns, types — all become type-safe, IDE-friendly code with no reflection or annotation magic involved.
+Column names are available as constants, so you don’t have to remember or hardcode them.
+Your schema becomes compile-time-verified code, and the compiler helps catch broken queries early.
+
+It also aligns perfectly with the https://quarkus.io/performance/[build-time principle]: fast startup, less runtime overhead.
+
+Writing SQL in JDBC often looks like this:
+
+[source,java]
+----
+String title = "Mastering SQL";
+
+String sql = "SELECT * FROM book WHERE title = ?";
+PreparedStatement stmt = conn.prepareStatement (sql);
+stmt.setString (1, title);
+ResultSet rs = stmt.executeQuery();
+----
+
+It's raw, fragile, just a string — and the compiler can’t help you. With jOOQ, you write:
+
+[source,java]
+----
+String title = "Mastering SQL";
+
+ctx.selectFrom (BOOK)
+   .where      (BOOK.TITLE.eq (title))
+   .fetch ();
+----
+
+=== Performance
+
+Think of the database as more than just storage — it’s a processing engine.
+
+With jOOQ, you can push logic closer to the data by leveraging SQL, views, stored procedures, and database functions — instead of re-implementing the same logic in Java. This often leads to better performance, fewer round-trips, and reduced bandwidth usage, since you control exactly what data is returned and how it's shaped.
+
+Rather than pulling too much into memory and filtering in Java, let the database do what it's optimized for.
+
+=== Extensibility
+
+jOOQ is highly extensible, especially when used with Kotlin.
+
+Instead of abstracting away SQL, jOOQ embraces dialect-specific features — and with Kotlin’s language features like extension functions and DSLs, it becomes easy to build reusable, composable query logic.
+
+You can tailor filters, projections, or even full queries without modifying core components, and still keep full control over SQL and execution.
+This makes it straightforward to work with vendor-specific functionality while keeping your code clean and modular.
+
+=== Testability
+
+No CDI context is needed to run the integration tests.
+All that's required is a plain https://docs.oracle.com/en/java/javase/17/docs/api/java.sql/javax/sql/DataSource.html[DataSource].
+
+Because jOOQ works directly with the database schema, data-driven integration tests become straightforward — not just for tables, but also for views, stored procedures, functions, and other database components. This makes it easy to test real database interactions without the overhead of full application contexts.
+[source,java]
+----
+@ExtendWith (DataSourceExtension::class)
+internal class BookRepositoryJooqTest {
+
+    @Test
+    fun `should make books shine again` (datasource: DataSource) {
+        val books = BookRepositoryJooq  (datasource)
+
+        ...
+    }
+
+}
+----
+
+=== Comparison Table
+
+[cols="1,1,1", options="header"]
+|===
+| Feature | JDBC / ORM | jOOQ
+
+| SQL visibility
+| Hidden (ORM) or raw strings
+| Fluent API, real SQL
+
+| Type safety
+| Low
+| High
+
+| Schema mapping
+| Implicit / annotation-heavy
+| Generated, explicit, type-safe
+
+| IDE support
+| Weak (strings, annotations)
+| Strong (Java code, autocomplete)
+
+| Domain Modeling
+| Medium
+| High
+
+| Performance
+| Medium
+| High
+
+| Debuggability
+| Low
+| High (logs actual SQL)
+|===
+
+For more detailed information, documentation, and advanced features, check out the official jOOQ website: https://www.jooq.org/
+
+Curious how to pronounce “jOOQ”? You’re not alone!
+Visit https://www.jooq.org/how-to-pronounce-jooq to hear the official pronunciation.
