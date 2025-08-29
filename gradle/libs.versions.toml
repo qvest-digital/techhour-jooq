@@ -1,10 +1,12 @@
 [libraries]
+com-zaxxer-hikaricp = { module = "com.zaxxer:HikariCP", version = "5.1.0" }
 org-assertj-assertj-core = { module = "org.assertj:assertj-core", version = "3.27.4" }
 org-flywaydb-flyway-core = { module = "org.flywaydb:flyway-core", version = "11.11.2" }
 org-flywaydb-flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version = "11.11.2" }
 org-junit-junit-bom = { module = "org.junit:junit-bom", version = "5.13.4" }
 org-jooq-jooq = { module = "org.jooq:jooq", version = "3.20.6" }
 org-postgresql-postgresql = { module = "org.postgresql:postgresql", version = "42.7.7" }
+org-testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version = "1.21.3" }
 
 [plugins]
 dev-monosoul-jooq-docker = { id = "dev.monosoul.jooq-docker", version = "7.0.22" }

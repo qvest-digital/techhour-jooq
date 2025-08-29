@@ -14,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation (libs.com.zaxxer.hikaricp)
     implementation (libs.org.flywaydb.flyway.core)
     runtimeOnly    (libs.org.flywaydb.flyway.database.postgresql)
     implementation (libs.org.jooq.jooq)
@@ -21,7 +22,10 @@ dependencies {
     jooqCodegen    (libs.org.postgresql.postgresql)
 
     testImplementation (platform (libs.org.junit.junit.bom))
+    testImplementation (platform (libs.org.testcontainers.bom))
     testImplementation (libs.org.assertj.assertj.core)
+    testImplementation ("org.testcontainers:junit-jupiter")
+    testImplementation ("org.testcontainers:postgresql")
     testImplementation ("org.junit.jupiter:junit-jupiter-api")
     testImplementation ("org.junit.jupiter:junit-jupiter-params")
     testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine")
