@@ -1,0 +1,8 @@
+:doctype: book
+:source-highlighter: highlight.js
+:stylesdir: style
+:stylesheet: layout.css
+:source-path: ..
+= Strong Types, Strong Queries: Exploring jOOQ
+
+include::chapter/introduction.adoc[]

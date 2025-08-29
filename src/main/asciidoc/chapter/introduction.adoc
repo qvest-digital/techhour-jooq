@@ -1,0 +1,13 @@
+:source-highlighter: highlight.js
+:stylesdir: style
+:stylesheet: layout.css
+:source-path: ..
+== Introduction
+Authors: Michael Clausen, ChatGPT — your friendly AI workshop buddy
+
+Our goal is to give you a clear, practical understanding of jOOQ’s power — focusing purely on the database layer: schema design, migrations, and writing clean, type-safe queries. jOOQ turns your database schema into a fluent, type-safe API — so you can write real SQL in Java, with *compiler help*, *autocomplete*, and *readability*.
+
+While jOOQ integrates well with frameworks like Spring and Quarkus, we’ll keep this presentation framework-free to keep the focus sharp.
+No web layer, no REST API — just the database, migrations, and clean query code, executed and verified through automated tests.
+
+Let’s get started and don't forget to clone the https://github.com[repository] on github.
