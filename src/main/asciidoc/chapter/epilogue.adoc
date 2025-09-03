@@ -1,0 +1,36 @@
+:source-highlighter: highlight.js
+:stylesdir: style
+:stylesheet: layout.css
+:source-path: ..
+== Wrap-up & Next Steps
+
+*Key Takeaways*
+
+jOOQ enables strong typing, clean queries, and compiler support.
+When combined with Flyway and code generation, you get a reliable end-to-end pipeline: from schema definition to safe, production-ready queries.
+The bookshop domain showed how easily you can move from raw SQL to fluent, type-safe DSL queries.
+
+*Next Steps*
+
+Start by cloning the repository and running the provided examples.
+From there, explore more advanced features such as vendor-specific SQL, database views, or stored procedures.
+Finally, integrate jOOQ code generation into your Gradle or CI/CD pipelines to make schema evolution seamless.
+
+To make the workshop more engaging, we’ve prepared a few hands-on tasks for you to work through using the sample domain:
+
+* Normalize the schema
+
+ Real databases evolve, and splitting entities into their own tables is one of the most common changes you’ll make. Move authors into their own dedicated table and update the book table to reference them by ID, giving you practice with normalization, migrations, and foreign keys.
+
+* Preserve historical revenue
+
+  Business data has to stay consistent over time, even as things change. Record the purchase price directly in the purchase record, rather than calculating it from the current book price, so past revenue figures remain stable even if prices change.
+
+* Change the build process
+
+  Deployments rarely happen in just one environment. Adjust the Flyway and jOOQ build process so the schema is deployed into a different schema namespace, showing how to adapt migrations and code generation to real-world environments.
+
+*Offer Help*
+
+If you’re considering migrating an existing project or want to explore whether jOOQ fits your stack, we’d be happy to help.
+We can provide guidance, migration support, or facilitate a focused deep-dive session tailored to your needs.
