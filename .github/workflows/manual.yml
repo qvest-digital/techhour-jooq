@@ -35,7 +35,7 @@ jobs:
         run: ./gradlew asciidoctor
 
       - name: Upload manual
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         id: deployment
         with:
           path: build/manual
