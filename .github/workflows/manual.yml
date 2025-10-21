@@ -1,0 +1,53 @@
+name: manual.yml
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - unstable
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Verify Gradle
+        uses: gradle/actions/wrapper-validation@v5
+
+      - name: Verify application
+        run: ./gradlew check
+
+      - name: Generate manual
+        run: ./gradlew asciidoctor
+
+      - name: Upload manual
+        uses: actions/upload-pages-artifact@v3
+        id: deployment
+        with:
+          path: build/manual
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        id: deployment
