@@ -1,5 +1,5 @@
 [libraries]
-com-zaxxer-hikaricp = { module = "com.zaxxer:HikariCP", version = "5.1.0" }
+com-zaxxer-hikaricp = { module = "com.zaxxer:HikariCP", version = "7.0.2" }
 org-assertj-assertj-core = { module = "org.assertj:assertj-core", version = "3.27.4" }
 org-flywaydb-flyway-core = { module = "org.flywaydb:flyway-core", version = "11.11.2" }
 org-flywaydb-flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version = "11.11.2" }
