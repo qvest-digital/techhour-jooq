@@ -10,4 +10,4 @@ Our goal is to give you a clear, practical understanding of jOOQ’s power — f
 While jOOQ integrates well with frameworks like Spring and Quarkus, we’ll keep this presentation framework-free to keep the focus sharp.
 No web layer, no REST API — just the database, migrations, and clean query code, executed and verified through automated tests.
 
-Let’s get started and don't forget to clone the https://github.com[repository] on github.
+Let’s get started and don't forget to clone the https://github.com/qvest-digital/techhour-jooq[repository] on github.
