@@ -4,8 +4,14 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      elevator:
+        patterns: ["*"]
 
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      elevator:
+        patterns: ["*"]
