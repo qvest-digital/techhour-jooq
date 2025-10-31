@@ -11,4 +11,4 @@ org-testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", ver
 [plugins]
 dev-monosoul-jooq-docker = { id = "dev.monosoul.jooq-docker", version = "7.0.27" }
 org-asciidoctor-jvm-convert = { id = "org.asciidoctor.jvm.convert", version = "4.0.5" }
-org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.20" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.21" }
