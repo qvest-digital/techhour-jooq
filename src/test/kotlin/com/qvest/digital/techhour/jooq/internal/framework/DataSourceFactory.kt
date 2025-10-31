@@ -2,7 +2,7 @@ package com.qvest.digital.techhour.jooq.internal.framework
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import org.testcontainers.containers.PostgreSQLContainer
+import org.testcontainers.postgresql.PostgreSQLContainer
 import javax.sql.DataSource
 
 object DataSourceFactory {
@@ -18,6 +18,6 @@ object DataSourceFactory {
         }
     )
 
-    fun create (container: PostgreSQLContainer<*>): DataSource = create (container.jdbcUrl, container.username, container.password)
+    fun create (container: PostgreSQLContainer): DataSource = create (container.jdbcUrl, container.username, container.password)
 
 }
