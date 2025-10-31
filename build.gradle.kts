@@ -67,6 +67,8 @@ tasks {
         sources {
             include ("index.adoc")
         }
+
+        failureLevel = org.asciidoctor.gradle.base.log.Severity.ERROR
     }
 
     generateJooqClasses {
