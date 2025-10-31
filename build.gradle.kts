@@ -46,6 +46,9 @@ tasks {
     val asciidoctortest by registering (Test::class) {
         group = asciidoctor.get ().group
 
+        classpath       = test.get ().classpath
+        testClassesDirs = test.get ().testClassesDirs
+
         useJUnitPlatform {
             includeTags ("asciidoc")
         }
