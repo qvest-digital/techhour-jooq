@@ -1,4 +1,5 @@
 :doctype: book
+:lang: en
 :source-highlighter: highlight.js
 :stylesdir: style
 :stylesheet: layout.css
