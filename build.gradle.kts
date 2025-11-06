@@ -1,11 +1,15 @@
 plugins {
+    alias (libs.plugins.com.palantir.git.version)
     alias (libs.plugins.dev.monosoul.jooq.docker)
     alias (libs.plugins.org.jetbrains.kotlin.jvm)
     alias (libs.plugins.org.asciidoctor.jvm.convert)
 }
 
 group   = "com.qvest.digital"
-version = "0.0.0-SNAPSHOT"
+version = run {
+    val gitVersion: groovy.lang.Closure<String> by extra
+        gitVersion ()
+}
 
 repositories {
     mavenCentral ()

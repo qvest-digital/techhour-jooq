@@ -9,6 +9,7 @@ org-postgresql-postgresql = { module = "org.postgresql:postgresql", version = "4
 org-testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version = "2.0.1" }
 
 [plugins]
+com-palantir-git-version = { id = "com.palantir.git-version", version = "4.1.0" }
 dev-monosoul-jooq-docker = { id = "dev.monosoul.jooq-docker", version = "8.0.1" }
 org-asciidoctor-jvm-convert = { id = "org.asciidoctor.jvm.convert", version = "4.0.5" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.21" }
