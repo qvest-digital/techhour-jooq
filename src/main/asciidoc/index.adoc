@@ -1,4 +1,6 @@
 :doctype: book
+:docinfo: shared,private-head
+:docinfodir: meta
 :lang: en
 :source-highlighter: highlight.js
 :stylesdir: style
