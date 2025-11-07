@@ -37,6 +37,12 @@ jobs:
       - name: Generate manual
         run: ./gradlew asciidoctor
 
+      - name: Generate sitemap
+        uses: cicirello/generate-sitemap@6a56a20238e631d653600cf792c3596722b78259 #1.10.4
+        with:
+          base-url-path: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          path-to-root: build/manual
+
       - name: Upload manual
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b #4.0.0
         id: deployment
