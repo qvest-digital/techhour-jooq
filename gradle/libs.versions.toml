@@ -1,15 +1,15 @@
 [libraries]
 com-zaxxer-hikaricp = { module = "com.zaxxer:HikariCP", version = "7.0.2" }
 org-assertj-assertj-core = { module = "org.assertj:assertj-core", version = "3.27.6" }
-org-flywaydb-flyway-core = { module = "org.flywaydb:flyway-core", version = "11.15.0" }
-org-flywaydb-flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version = "11.15.0" }
-org-junit-junit-bom = { module = "org.junit:junit-bom", version = "6.0.0" }
-org-jooq-jooq = { module = "org.jooq:jooq", version = "3.20.8" }
+org-flywaydb-flyway-core = { module = "org.flywaydb:flyway-core", version = "11.17.0" }
+org-flywaydb-flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version = "11.17.0" }
+org-junit-junit-bom = { module = "org.junit:junit-bom", version = "6.0.1" }
+org-jooq-jooq = { module = "org.jooq:jooq", version = "3.20.9" }
 org-postgresql-postgresql = { module = "org.postgresql:postgresql", version = "42.7.8" }
 org-testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version = "2.0.1" }
 
 [plugins]
-com-palantir-git-version = { id = "com.palantir.git-version", version = "4.1.0" }
-dev-monosoul-jooq-docker = { id = "dev.monosoul.jooq-docker", version = "8.0.1" }
+com-palantir-git-version = { id = "com.palantir.git-version", version = "4.2.0" }
+dev-monosoul-jooq-docker = { id = "dev.monosoul.jooq-docker", version = "8.0.2" }
 org-asciidoctor-jvm-convert = { id = "org.asciidoctor.jvm.convert", version = "4.0.5" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.21" }
